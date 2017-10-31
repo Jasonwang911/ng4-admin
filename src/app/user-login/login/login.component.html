@@ -1,5 +1,5 @@
 <div nz-row style="margin: 10% auto;">
-    <h2 style="text-align:center;margin-top:20px;">Jason后台管理</h2>
+    <h2 style="text-align:center;margin-top:20px;" (click)="getData()">Jason后台管理</h2>
     <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="_submitForm()">
       <div nz-form-item>
         <div nz-form-control [nzValidateStatus]="validateForm.controls.userName">

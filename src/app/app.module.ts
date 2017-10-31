@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   {path: '', loadChildren: './content/content.module#ContentModule'},
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     NgZorroAntdModule.forRoot(),
     RouterModule.forRoot(appRoutes, {useHash: true})
   ],
