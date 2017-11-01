@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { HttpService } from './../../service/http.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   validateForm: FormGroup;
   
-    constructor(private fb: FormBuilder, private http: HttpClient) {
+    constructor(private fb: FormBuilder, private http: HttpClient, private httpService: HttpService) {
     }
   
     ngOnInit() {
@@ -25,15 +26,13 @@ export class LoginComponent implements OnInit {
       });
     }
 
-    getData() {
-      this.http.post('/admin/login',  {username: 'jason', password: '123456'})
-      .subscribe( resp => {
-        // 
-        // console.log(data);
-        // Here, resp is of type HttpResponse<MyJsonData>.
-        // You can inspect its headers:
-        console.log(resp);
+    getData(data) {
+      var d = {username: 'jason', password: '123456'};
+      this.httpService.postData('/admin/login', d)
+      .subscribe( res => {
+        console.log(res)
       })
+      
     }
 
     _submitForm() {
@@ -42,14 +41,10 @@ export class LoginComponent implements OnInit {
         this.validateForm.controls[ i ].markAsDirty();
       }
 
-      this.http.post('http://localhost:3000/admin/login', {username: "jason", password: "123456"})
-      .subscribe( data => {
-        // 
-        // console.log(data);
-      })
-      setTimeout( () => {
-        this.btnText = '已登录';
-      }, 3000);
+      // this.http.post('http://127.0.0.1:3000/admin/login', {username: "jason", password: "123456"})
+      // .subscribe( data => {
+      //   this.btnText = '已登录';
+      // })
       
     }
 

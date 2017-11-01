@@ -7,10 +7,11 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './service/http.service';
 
 const appRoutes: Routes = [
-  {path: '', loadChildren: './content/content.module#ContentModule'},
-  {path: 'login', loadChildren: './user-login/user-login.module#UserLoginModule'}
+  {path: 'login', loadChildren: './content/content.module#ContentModule'},
+  {path: '', loadChildren: './user-login/user-login.module#UserLoginModule'}
 ];
 
 @NgModule({
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
     NgZorroAntdModule.forRoot(),
     RouterModule.forRoot(appRoutes, {useHash: true})
   ],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
