@@ -10,8 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './service/http.service';
 
 const appRoutes: Routes = [
-  {path: 'login', loadChildren: './content/content.module#ContentModule'},
-  {path: '', loadChildren: './user-login/user-login.module#UserLoginModule'}
+  {path: 'admin', loadChildren: './content/content.module#ContentModule'},
+  {path: 'login', loadChildren: './user-login/user-login.module#UserLoginModule'}
 ];
 
 @NgModule({
