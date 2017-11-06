@@ -2,6 +2,7 @@ import { RouterModule } from '@angular/router';
 import { ContentComponent } from './content.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
+import { BannerListComponent } from './banner/banner-list/banner-list.component';
 
 export const contentRoutes = [
     {
@@ -12,7 +13,7 @@ export const contentRoutes = [
             // 用户列表页面
             {path: 'user-list', component: UserListComponent},
             // 新增用户页面
-            { path: 'add-user', component: AddUserComponent },
+            { path: 'add-user', component: BannerListComponent },
         ]
     }
 ]

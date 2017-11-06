@@ -8,6 +8,7 @@ import { contentRoutes } from './content.routes';
 import { ContentComponent } from './content.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
+import { BannerListComponent } from './banner/banner-list/banner-list.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { AddUserComponent } from './user/add-user/add-user.component';
   declarations: [
     ContentComponent,
     UserListComponent,
-    AddUserComponent
+    AddUserComponent,
+    BannerListComponent
   ]
 })
 export class ContentModule { }

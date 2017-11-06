@@ -16,7 +16,9 @@ export class ContentComponent implements OnInit {
     ]},
     {title: '设备管理', children: [
       {src: '', name: '设备列表'},
-      {src: '', name: '新建设备'}
+      {src: '', name: '新建设备', children: [
+        {src: '', name: 'aaaaa'}
+      ]}
     ]},
     {title: '设备型号管理', children: [
       {src: '', name: '设备型号列表'},
