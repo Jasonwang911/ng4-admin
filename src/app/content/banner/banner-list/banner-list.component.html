@@ -1,10 +1,18 @@
 <div>
     <span>账号：</span>
-    <nz-input [(ngModel)]="inputValue" [nzPlaceHolder]="'Basic usage'" (ngModelChange)="_console($event)"></nz-input>
+    <nz-input [(ngModel)]="userAddList.username" name="username" [nzPlaceHolder]="" (ngModelChange)="_console($event)" required minlength="4" #username="ngModel"></nz-input>
+    <div *ngIf="username.invalid && (username.dirty || username.touched)">
+        <div *ngIf="username.errors.required">
+            请输入正确的账号格式!
+        </div>
+        <div *ngIf="username.errors.minlength">
+            账号长度必须大于四位!
+        </div>
+    </div>
     <span>姓名：</span>
-    <nz-input [(ngModel)]="inputValue" [nzPlaceHolder]="'Basic usage'" (ngModelChange)="_console($event)"></nz-input>
+    <nz-input [(ngModel)]="userAddList.name" [nzPlaceHolder]="" (ngModelChange)="_console($event)"></nz-input>
     <span>角色：</span>
-    <nz-input [(ngModel)]="inputValue" [nzPlaceHolder]="'Basic usage'" (ngModelChange)="_console($event)"></nz-input>
+    <nz-input [(ngModel)]="userAddList.role" [nzPlaceHolder]="" (ngModelChange)="_console($event)"></nz-input>
     <span>用户状态：</span>
-    <nz-input [(ngModel)]="inputValue" [nzPlaceHolder]="'Basic usage'" (ngModelChange)="_console($event)"></nz-input>
+    <nz-input [(ngModel)]="userAddList.userstate" [nzPlaceHolder]="'请输入用户状态'" (ngModelChange)="_console($event)"></nz-input>
 </div>

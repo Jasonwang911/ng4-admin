@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BannerListComponent implements OnInit {
 
+  userAddList = {
+    username: '',
+    name: '',
+    role: '',
+    userstate: ''
+  }
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  _console($event) {
+    console.log(this.userAddList)
   }
 
 }
