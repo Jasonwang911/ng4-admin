@@ -21,8 +21,6 @@ export class BannerListComponent implements OnInit {
   isVisible = false;
   
   showModal = (data, i) => {
-    console.log(data);
-    console.log(i)
     this.formData = data;
     this.isVisible = true;
   }
@@ -39,12 +37,12 @@ export class BannerListComponent implements OnInit {
   }
 
 
-  showConfirm = (data) => {
+  showConfirm = (formData, i, data) => {
     this.confirmServ.confirm({
       title  : '您是否确认要删除这项内容',
       content: '<b>如果删除请点击确认按钮，否则点击取消</b>',
       onOk() {
-        console.log(data);
+        data.splice(i, 1);
       },
       onCancel() {
       }
