@@ -1,18 +1,67 @@
-<div>
-    <span>账号：</span>
-    <nz-input [(ngModel)]="userAddList.username" name="username" [nzPlaceHolder]="" (ngModelChange)="_console($event)" required minlength="4" #username="ngModel"></nz-input>
-    <div *ngIf="username.invalid && (username.dirty || username.touched)">
-        <div *ngIf="username.errors.required">
-            请输入正确的账号格式!
+<nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10">
+    <thead nz-thead>
+        <tr>
+        <th nz-th><span>ID</span></th>
+        <th nz-th><span>名称</span></th>
+        <th nz-th><span>产品类型</span></th>
+        <th nz-th><span>时间</span></th>
+        <th nz-th><span>状态</span></th>
+        <th nz-th><span>操作</span></th>
+        </tr>
+    </thead>
+    <tbody nz-tbody>
+        <tr nz-tbody-tr *ngFor="let data of nzTable.data; let i = index;">
+            <td nz-td>
+                <a>{{data.ID}}</a>
+            </td>
+            <td nz-td>{{data.PRD_NAME}}</td>
+            <td nz-td>{{data.PRD_TYPE_ID}}</td>
+            <td nz-td>{{data.CREATE_TIME}}</td>
+            <td nz-td *ngIf="data.state == '1'">正常</td>
+            <td nz-td *ngIf="data.state == '0'">下架</td>
+            <td nz-td>
+                <button nz-button [nzType]="'primary'" (click)="showModal(data,i)">
+                    <span>修改</span>
+                </button>
+                <button nz-button [nzType]="'info'" (click)="showConfirm(data)">
+                    <span>删除</span>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>
+
+<nz-modal [nzVisible]="isVisible" [nzTitle]="'编辑产品'" [nzContent]="modalContent" (nzOnCancel)="handleCancel($event)" (nzOnOk)="handleOk($event)">
+    <ng-template #modalContent>
+        <div>
+            <span>ID:</span><span>{{formData.ID}}</span>
         </div>
-        <div *ngIf="username.errors.minlength">
-            账号长度必须大于四位!
+        <div>
+            <span>名称:</span>
+            <nz-input [(ngModel)]="formData.PRD_NAME" [nzPlaceHolder]="formData.PRD_NAME"></nz-input>
         </div>
-    </div>
-    <span>姓名：</span>
-    <nz-input [(ngModel)]="userAddList.name" [nzPlaceHolder]="" (ngModelChange)="_console($event)"></nz-input>
-    <span>角色：</span>
-    <nz-input [(ngModel)]="userAddList.role" [nzPlaceHolder]="" (ngModelChange)="_console($event)"></nz-input>
-    <span>用户状态：</span>
-    <nz-input [(ngModel)]="userAddList.userstate" [nzPlaceHolder]="'请输入用户状态'" (ngModelChange)="_console($event)"></nz-input>
-</div>
+        <span>年化收益：</span>
+        <nz-input-number [(ngModel)]="demoValue" [nzMin]="1" [nzMax]="10000" [nzStep]="0.01"></nz-input-number>
+    </ng-template>
+</nz-modal>
+
+
+<!-- <div>
+        <span>账号：</span>
+        <nz-input [(ngModel)]="userAddList.username" name="username" [nzPlaceHolder]="" (ngModelChange)="_console($event)" required minlength="4" #username="ngModel"></nz-input>
+        <div *ngIf="username.invalid && (username.dirty || username.touched)">
+            <div *ngIf="username.errors.required">
+                请输入正确的账号格式!
+            </div>
+            <div *ngIf="username.errors.minlength">
+                账号长度必须大于四位!
+            </div>
+        </div>
+        <span>姓名：</span>
+        <nz-input [(ngModel)]="userAddList.name" [nzPlaceHolder]="" (ngModelChange)="_console($event)"></nz-input>
+        <span>角色：</span>
+        <nz-input [(ngModel)]="userAddList.role" [nzPlaceHolder]="" (ngModelChange)="_console($event)"></nz-input>
+        <span>用户状态：</span>
+        <nz-input [(ngModel)]="userAddList.userstate" [nzPlaceHolder]="'请输入用户状态'" (ngModelChange)="_console($event)"></nz-input>
+    </div> -->
+
